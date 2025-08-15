@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://TU_BACKEND.onrender.com/usuarios")
+      .get("https://test-nje7.onrender.com/usuarios")
       .then((res) => setUsuarios(res.data))
       .catch((err) => console.error(err));
   }, []);
