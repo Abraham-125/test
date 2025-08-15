@@ -16,6 +16,16 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
+app.post("/usuarios", async (req, res) => {
+  const { nombre } = req.body;
+  try {
+    await pool.query("INSERT INTO usuarios (nombre) VALUES ($1)", [nombre]);
+    res.status(201).json({ message: "Usuario creado" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Ruta de prueba
 app.get("/usuarios", async (req, res) => {
   try {
